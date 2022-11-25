@@ -20,16 +20,22 @@ namespace DP_Demo
     /// </summary>
     public partial class MainWindow : Window
     {
-        
 
         public MainWindow()
         {
             InitializeComponent();
-            //var chart = new ChartCanvas();
-            //var rect = new Rectangle();
-            //chart.Children.Add(rect);
 
-            //ChartCanvas.SetMax(rect, 500);
+            var model = new RectModel()
+            {
+                Width = 200,
+                Height = 100,
+                StrokeThickness = 3
+            };
+            DataContext = model;
+
+            CustomRectangle.BindTo(nameof(model.Width), model, view, CustomRectangle.WidthProperty);
+            CustomRectangle.BindTo(nameof(model.Height), model, view, CustomRectangle.HeightProperty);
+            CustomRectangle.BindTo(nameof(model.StrokeThickness), model, view, CustomRectangle.StrokeThicknessProperty);
         }
     }
 }

@@ -24,9 +24,9 @@ namespace DP_Demo
                 typeMetadata: new PropertyMetadata(
                     defaultValue: false,
                     propertyChangedCallback: new PropertyChangedCallback(OnValueChnaged),
-                    coerceValueCallback: new CoerceValueCallback(OnCoerceValue)));
+                    coerceValueCallback: new CoerceValueCallback(OnCoercedValue)));
 
-        private static object OnCoerceValue(DependencyObject d, object baseValue)
+        private static object OnCoercedValue(DependencyObject d, object baseValue)
         {
             if (baseValue is false)
                 return true;
@@ -59,9 +59,9 @@ namespace DP_Demo
                 typeof(double),
                 typeof(ChartCanvas),
                 new PropertyMetadata(0.0, new PropertyChangedCallback(OnMaxValueChanged),
-                    new CoerceValueCallback(OnMaxValueCoerce)));
+                    new CoerceValueCallback(OnMaxValueCoerced)));
 
-        private static object OnMaxValueCoerce(DependencyObject d, object baseValue)
+        private static object OnMaxValueCoerced(DependencyObject d, object baseValue)
         {
             var child = (FrameworkElement)d;
             if(child.Parent != null)
